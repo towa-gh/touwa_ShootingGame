@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3c1739a3-b61d-4fc6-bafc-24721a02e78a}</ProjectGuid>
-    <RootNamespace>My14koukiseisakutouwahiga</RootNamespace>
+    <ProjectGuid>{d8d91859-e6cc-484a-9e44-dea99ca88d44}</ProjectGuid>
+    <RootNamespace>My14ShootingGameHigaTouwa</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -88,10 +88,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\dxlib</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\dxlib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -102,12 +105,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\dxlib</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\dxlib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -139,7 +145,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ShootingGame\main.cpp" />
+    <ClCompile Include="ShootingGame\Scene\EndScene.cpp" />
+    <ClCompile Include="ShootingGame\Scene\GameClearScene.cpp" />
+    <ClCompile Include="ShootingGame\Scene\GameMain.cpp" />
+    <ClCompile Include="ShootingGame\Scene\GameOverScene.cpp" />
+    <ClCompile Include="ShootingGame\Scene\SceneManager.cpp" />
+    <ClCompile Include="ShootingGame\Scene\TitleScene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ShootingGame\common.h" />
+    <ClInclude Include="ShootingGame\Scene\AbstractScene.h" />
+    <ClInclude Include="ShootingGame\Scene\EndScene.h" />
+    <ClInclude Include="ShootingGame\Scene\GameClearScene.h" />
+    <ClInclude Include="ShootingGame\Scene\GameMain.h" />
+    <ClInclude Include="ShootingGame\Scene\GameOverScene.h" />
+    <ClInclude Include="ShootingGame\Scene\SceneManager.h" />
+    <ClInclude Include="ShootingGame\Scene\TitleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
