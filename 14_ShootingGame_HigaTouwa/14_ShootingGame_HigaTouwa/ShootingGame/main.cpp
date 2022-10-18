@@ -17,6 +17,7 @@ int	g_OldKey;				// 前回の入力キー
 int	g_NowKey;				// 今回の入力キー
 int	g_KeyFlg;				// 入力キー情報
 int	g_EndImage;				// 画像用変数
+int g_TitleImage;
 int	g_WaitTime;			// 待ち時間
 int g_PosY;					// スクロール時のＹ座標
 int	g_Score;			// スコア
@@ -38,7 +39,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	if (DxLib_Init() == -1) return -1;	// DXライブラリの初期化処理
 
 	//タイトル画像データの読み込み
+
 	if ((g_TitleImage = LoadGraph("images/Title.png")) == -1) return -1;
+
 	//エンド画像データの読み込み
 	if ((g_EndImage = LoadGraph("images/End.bmp")) == -1) return -1;
 
