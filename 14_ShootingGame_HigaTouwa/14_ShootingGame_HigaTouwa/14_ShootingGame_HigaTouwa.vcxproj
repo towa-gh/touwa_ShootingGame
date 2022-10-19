@@ -145,23 +145,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ShootingGame\Base\BulletsBase.h" />
+    <ClCompile Include="ShootingGame\Base\BulletsBase.cpp" />
+    <ClCompile Include="ShootingGame\Base\CharaBase.cpp" />
+    <ClCompile Include="ShootingGame\Base\Enemy.cpp" />
+    <ClCompile Include="ShootingGame\Base\ItemBase.cpp" />
+    <ClCompile Include="ShootingGame\Base\Player.cpp" />
+    <ClCompile Include="ShootingGame\Base\SphereColleder.cpp" />
     <ClCompile Include="ShootingGame\main.cpp" />
     <ClCompile Include="ShootingGame\Scene\EndScene.cpp" />
-    <ClCompile Include="ShootingGame\Scene\GameClearScene.cpp" />
+    <ClCompile Include="ShootingGame\Scene\GameClearcpp.cpp" />
     <ClCompile Include="ShootingGame\Scene\GameMain.cpp" />
     <ClCompile Include="ShootingGame\Scene\GameOverScene.cpp" />
     <ClCompile Include="ShootingGame\Scene\SceneManager.cpp" />
     <ClCompile Include="ShootingGame\Scene\TitleScene.cpp" />
+    <ClCompile Include="ShootingGame\Base\StraightBullets.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ShootingGame\common.h" />
+    <ClInclude Include="ShootingGame\Base\CharaBase.h" />
+    <ClInclude Include="ShootingGame\Base\Enemy.h" />
+    <ClInclude Include="ShootingGame\Base\ItemBase.h" />
+    <ClInclude Include="ShootingGame\Base\Player.h" />
+    <ClInclude Include="ShootingGame\Base\common.h" />
     <ClInclude Include="ShootingGame\Scene\AbstractScene.h" />
     <ClInclude Include="ShootingGame\Scene\EndScene.h" />
-    <ClInclude Include="ShootingGame\Scene\GameClearScene.h" />
+    <ClInclude Include="ShootingGame\Scene\GameClear.h" />
     <ClInclude Include="ShootingGame\Scene\GameMain.h" />
     <ClInclude Include="ShootingGame\Scene\GameOverScene.h" />
     <ClInclude Include="ShootingGame\Scene\SceneManager.h" />
+    <ClInclude Include="ShootingGame\Base\SphereCollider.h" />
     <ClInclude Include="ShootingGame\Scene\TitleScene.h" />
+    <ClInclude Include="ShootingGame\Base\StraightBullets.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
