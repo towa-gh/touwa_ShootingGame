@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ShootingGame\Base\KeyManager.cpp" />
     <ClCompile Include="ShootingGame\Base\BulletsBase.h" />
     <ClCompile Include="ShootingGame\Base\BulletsBase.cpp" />
     <ClCompile Include="ShootingGame\Base\CharaBase.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="ShootingGame\Base\StraightBullets.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ShootingGame\Base\KeyManager.h" />
     <ClInclude Include="ShootingGame\Base\CharaBase.h" />
     <ClInclude Include="ShootingGame\Base\Enemy.h" />
     <ClInclude Include="ShootingGame\Base\ItemBase.h" />

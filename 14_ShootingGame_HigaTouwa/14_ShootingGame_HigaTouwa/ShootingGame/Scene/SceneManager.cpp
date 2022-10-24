@@ -1,9 +1,11 @@
 #include<stdio.h>
 #include "SceneManager.h"
+#include"../Base/KeyManager.h"
 
 //メンバ変数の値を置き換えるのがアップデート関数
 void SceneManager::Update()
 {
+	KeyManager::Update();
 	//現在のシーンのアップデートを実行
 	mScene->Update();
 }

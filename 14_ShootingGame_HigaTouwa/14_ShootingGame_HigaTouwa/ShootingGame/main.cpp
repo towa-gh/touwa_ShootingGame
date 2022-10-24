@@ -1,6 +1,7 @@
 #include"DxLib.h"
 #include"Scene/SceneManager.h"
 #include"Scene/GameMain.h"
+#include"Base/KeyManager.h"
 
 /***********************************************
  * プログラムの開始
