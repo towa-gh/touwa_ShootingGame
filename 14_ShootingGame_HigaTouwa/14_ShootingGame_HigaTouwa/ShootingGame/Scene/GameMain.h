@@ -1,10 +1,14 @@
 #pragma once
 #include "AbstractScene.h"
 #include"../Base/Player.h"
+#include"../Base/Enemy.h"
+#include"../Base/ItemBase.h"
 class GameMainScene : public AbstractScene
 {
 private:
 	Player* player;
+	Enemy** enemy;
+	ItemBase** item;
 
 public:
 	GameMainScene();

@@ -1,6 +1,7 @@
 #include "Player.h"
 #include"StraightBullets.h"
 #include"KeyManager.h"
+#include"Recovery.h"
 #include "DxLib.h"
 
 Player::Player(T_Location location) :CharaBase(location, 10.f, T_Location{ 2,2 }), score(0), life(10)
@@ -16,7 +17,26 @@ Player::Player(T_Location location) :CharaBase(location, 10.f, T_Location{ 2,2 }
 void Player::Update()
 {
 	T_Location newLocation = GetLocation();
-	newLocation.x += 1;
+	if (KeyManager::OnKeyPressed(KEY_INPUT_W))
+	{
+		newLocation.y -= speed.y;
+	}
+
+	if (KeyManager::OnKeyPressed(KEY_INPUT_A))
+	{
+		newLocation.x -= speed.x;
+	}
+
+	if (KeyManager::OnKeyPressed(KEY_INPUT_S))
+	{
+		newLocation.y += speed.y;
+	}
+
+	if (KeyManager::OnKeyPressed(KEY_INPUT_D))
+	{
+		newLocation.x += speed.x;
+	}
+
 	SetLocation(newLocation);
 
 	int bulletCount;
@@ -27,19 +47,33 @@ void Player::Update()
 			break;
 		}
 		bullets[bulletCount]->Update();
-	}
 
-	if (KeyManager::OnMouseClicked(MOUSE_INPUT_LEFT))
+
+		if (bullets[bulletCount]->isScreebOut())
+		{
+			DeleteBullet(bulletCount);
+			bulletCount--;
+		}
+	}
+			//âÊñ Ç…çsÇ¡ÇΩÇÁíeÇè¡Ç∑
+
+
+	if (KeyManager::OnMousePressed(MOUSE_INPUT_LEFT))
 	{
 		if (bulletCount < 30 && bullets[bulletCount] == nullptr)
 		{
-			bullets[bulletCount] = new StraightBullets(GetLocation());
+			bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{0,-2});
 		}
 	}
 }
 
 void Player::Draw()
 {
+#define _DEBUG_MODE
+
+#ifdef _DEBUG_MODE
+	DrawFormatString(10, 10, GetColor(255, 255, 255), "life=%d", life);
+#endif
 	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 0));
 
 	for (int bulletCount = 0; bulletCount < 30; bulletCount++)
@@ -52,9 +86,24 @@ void Player::Draw()
 	}
 }
 
-void Player::Hit()
+void Player::Hit(int damage)
 {
 
+}
+
+void Player::Hit(ItemBase* item) 
+{
+	switch (item->GetType())
+	{
+	case E_ITEM_TYPE::Heal:
+	{
+		Recovery* recovery = dynamic_cast<Recovery*>(item);
+		life += recovery->GetVolume();
+		break;
+	}
+	default:
+		break;
+	}
 }
 
 bool Player::LifeCheck()
@@ -66,4 +115,12 @@ bool Player::LifeCheck()
 int  Player::GetScore()
 {
 	return score;
+}
+
+void Player::AddScore(int Score)
+{
+	if (0 <= score) 
+	{
+		this->score += score;
+	}
 }

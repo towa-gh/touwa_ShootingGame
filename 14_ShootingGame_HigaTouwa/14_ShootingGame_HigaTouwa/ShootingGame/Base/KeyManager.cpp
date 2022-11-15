@@ -47,7 +47,7 @@ bool KeyManager::OnMouseReleased(int Key)		//キーを離した時の処理
 }
 bool KeyManager::OnMousePressed(int Key)		//キーが押されてるとき、押しているときの処理
 {
-	bool Mcet = (nowKey[Key] == 1);
+	bool Mcet = (nowMouse & Key);
 	return Mcet;
 }
 

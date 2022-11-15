@@ -1,5 +1,6 @@
 #pragma once
 #include"SphereCollider.h"
+
 class BulletsBase :public SphereCollider
 {
 private:
@@ -14,5 +15,6 @@ public:
 public:
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
+	virtual bool isScreebOut() = 0;
 	int GetDamage();
 };
