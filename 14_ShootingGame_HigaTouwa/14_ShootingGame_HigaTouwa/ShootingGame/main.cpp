@@ -3,6 +3,10 @@
 #include"Scene/GameMain.h"
 #include"Base/KeyManager.h"
 
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 720
+#define SCREEN_COLOR_BIT_16 16
+
 /***********************************************
  * プログラムの開始
  ***********************************************/
@@ -14,9 +18,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	ChangeWindowMode(TRUE);		// ウィンドウモードで起動
 
+	SetWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_COLOR_BIT_16);
+
 	if (DxLib_Init() == -1) return -1;	// DXライブラリの初期化処理
 
-	SetDrawScreen(DX_SCREEN_BACK);	// 描画先画面を裏にする
+	SetDrawScreen(DX_SCREEN_BACK);	// 描画先画面を裏にする1280 720
 
 	SetFontSize(20);		// 文字サイズを設定
 

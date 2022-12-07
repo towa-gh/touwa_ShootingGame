@@ -1,7 +1,6 @@
 #include"Enemy.h"
 #include"DxLib.h"
 #include"KeyManager.h"
-//#include"BulletsBase.h"
 #include"StraightBullets.h"
 
 Enemy::Enemy(T_Location location) : CharaBase(location, 20.f, T_Location{ 0,0.5 }), hp(10), point(10)
