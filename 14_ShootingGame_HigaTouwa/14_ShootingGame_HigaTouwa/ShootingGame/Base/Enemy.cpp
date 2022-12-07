@@ -2,8 +2,9 @@
 #include"DxLib.h"
 #include"KeyManager.h"
 #include"StraightBullets.h"
+#include"RotateBullet.h"
 
-Enemy::Enemy(T_Location location) : CharaBase(location, 20.f, T_Location{ 0,0.5 }), hp(10), point(10)
+Enemy::Enemy(T_Location location) : CharaBase(location, 20.f, T_Location{ 0,0.5 }), hp(10), point(10), shotNum(0)
 {
 	//BulletsBase** bullets;
 	bullets = new BulletsBase * [30];
@@ -15,9 +16,9 @@ Enemy::Enemy(T_Location location) : CharaBase(location, 20.f, T_Location{ 0,0.5 
 
 void Enemy::Update()
 {
-	T_Location newLocation = GetLocation();
-	newLocation.y += speed.y;
-	SetLocation(newLocation);
+	//T_Location newLocation = GetLocation();
+	//newLocation.y += speed.y;
+	//SetLocation(newLocation);
 
 	int bulletCount;
 	for (bulletCount = 0; bulletCount < 30; bulletCount++)
@@ -40,7 +41,9 @@ void Enemy::Update()
 
 	if (bulletCount < 30 && bullets[bulletCount] == nullptr)
 	{
-		bullets[bulletCount] = new StraightBullets(GetLocation(),T_Location { 0, 2 });
+		bullets[bulletCount] = new RotateBullet(GetLocation(), 2.f, (20 * shotNum));
+		shotNum++;
+		//bullets[bulletCount] = new StraightBullets(GetLocation(),T_Location { 0, 2 });
 	}
 }
 void Enemy::Draw()
