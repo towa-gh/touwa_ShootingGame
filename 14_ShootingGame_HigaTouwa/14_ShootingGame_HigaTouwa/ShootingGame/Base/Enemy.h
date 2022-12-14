@@ -6,7 +6,7 @@ private:
 	int hp;
 	int point;
 	int shotNum;
-
+	int l = 0;
 public:
 	Enemy(T_Location location);
 
