@@ -42,7 +42,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			DxLib_End();  //DXライブラり使用の終了処理
 			return 0;     //ソフトの終了
 		}
-
+		if (CheckHitKey(KEY_INPUT_ESCAPE) != 0) {// ESCAPEキーが押されているかを調べる
+			break;			// 押されていたらメインループを抜ける
+		}
 		ScreenFlip();			// 裏画面の内容を表画面に反映
 	}
 

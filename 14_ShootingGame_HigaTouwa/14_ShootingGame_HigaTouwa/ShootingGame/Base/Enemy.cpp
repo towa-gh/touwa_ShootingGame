@@ -15,11 +15,11 @@ struct MoveInfomation
 };
 
 MoveInfomation moveInfo[5] = {
-	{ 0,    640, 150, 1,   0, 0},
-	{ 0, 1200.4, 150, 2,   0, 2},
-	{ 1,      0,   0, 3, 300, 1},
-	{ 0,   80.2, 150, 4,   0, 2},
-	{ 1,      0,   0, 1, 300, 1},
+	//{ 0,    640, 150, 1,   0, 0},
+	//{ 0, 1200.4, 150, 2,   0, 2},
+	//{ 1,      0,   0, 3, 300, 1},
+	//{ 0,   80.2, 150, 4,   0, 2},
+	//{ 1,      0,   0, 1, 300, 1},
 };
 //移動する座標
 T_Location locations[4] = {
@@ -38,6 +38,36 @@ int next[4] = {
 int current = 0;
 int WaitTime = 0;
 
+void InputCSV()
+{
+	FILE* fp;//FILE型構造体
+	errno_t error;//fopen_sのエラー確認
+
+	error = fopen_s(&fp, "ShootingGame/Enemy/MoveEnemy.csv", "r");
+	if (error != 0)
+	{
+		//エラー発生
+		return;
+	}
+	else
+	{
+		//ファイルを開いた
+		char line[100];
+		for (int i = 0; fgets(line, 100, fp) != NULL; i++)
+		{
+			sscanf_s(line, "%d, %f, %f, %d, %d, %d",
+				&moveInfo[i].pattern,
+				&moveInfo[i].targetLocation.x,
+				&moveInfo[i].targetLocation.y,
+				&moveInfo[i].next,
+				&moveInfo[i].waitTimeFlame,
+				&moveInfo[i].attackPattern);
+		}
+		return;
+	}
+	fclose(fp);//ファイルを閉じる
+}
+
 Enemy::Enemy(T_Location location) : CharaBase(location, 20.f, T_Location{ 1,1 }), hp(10), point(10), shotNum(0)
 {
 	//BulletsBase** bullets;
@@ -50,6 +80,7 @@ Enemy::Enemy(T_Location location) : CharaBase(location, 20.f, T_Location{ 1,1 })
 
 void Enemy::Update()
 {
+	InputCSV();
 	switch (moveInfo[current].pattern)
 	{
 	case 0:
@@ -204,55 +235,3 @@ void Enemy::move()
 	SetLocation(newLocation);
 
 }
-//if (l < 4) {
-//	//今いる座標と行きたい座標の位置があっていたら次の配列を見る
-//	if (GetLocation().x == locations[l].x && GetLocation().y == locations[l].y)
-//	{
-//		l++;
-//	}
-//	else {
-//		//最初の画面外から出てくる処理
-//		if (GetLocation().y != locations[l].y)
-//		{
-//			//下に下がる処理
-//			if (GetLocation().y < locations[l].y) {
-
-//				newLocation.y += speed.y;
-//				SetLocation(newLocation);
-//			}
-//			//上に上がる処理
-//			else if (GetLocation().y > locations[l].y)
-//			{
-//				newLocation.y -= speed.y;
-//				SetLocation(newLocation);
-//			}
-//		}
-//		//横移動処理
-//		if (GetLocation().x != locations[l].x)
-//		{
-//			//右に行く処理
-//			if (GetLocation().x < locations[l].x) {
-
-//				newLocation.x += speed.x;
-//				SetLocation(newLocation);
-//			}
-//			//左に行く処理
-//			else if (GetLocation().x > locations[l].x)
-//			{
-//				newLocation.x -= speed.x;
-//				SetLocation(newLocation);
-//			}
-//		}
-//		//小数点がずれていたら目的地の座標XYを代入して直す
-//			if (GetLocation().x > locations[l].x) {
-//				newLocation.x = locations[l].x;
-//			}
-//		if (GetLocation().y > locations[l].y) {
-//			newLocation.y = locations[l].y;
-//		}
-//	}
-//}
-//else//３についたら２を代入する
-//{
-//	l = 2;
-//}
