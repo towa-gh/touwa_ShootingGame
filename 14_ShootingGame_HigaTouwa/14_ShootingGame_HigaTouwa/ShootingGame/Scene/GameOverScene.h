@@ -1,13 +1,13 @@
 #pragma once
 #include "AbstractScene.h"
 
-class GameTitleScene : public AbstractScene
+class GameOverScene : public AbstractScene
 {
 private:
-	static int BrinkCounter;
+	int BrinkCounter;	// 点滅用の変数
 public:
-	GameTitleScene();
-	virtual ~GameTitleScene()	//デストラクタ
+	GameOverScene();
+	virtual ~GameOverScene()	//デストラクタ
 	{}
 
 public:

@@ -4,7 +4,7 @@
 class GameTitleScene : public AbstractScene
 {
 private:
-	static int BrinkCounter;
+	int BrinkCounter;	// 点滅用の変数
 public:
 	GameTitleScene();
 	virtual ~GameTitleScene()	//デストラクタ

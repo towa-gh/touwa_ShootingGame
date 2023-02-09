@@ -1,4 +1,6 @@
 #include "GameMain.h"
+#include"GameOverScene.h"
+#include"GameClear.h"
 #include"../Base/Recovery.h"
 
 #define SCREEN_WIDTH 1280
@@ -27,7 +29,6 @@ void GameMainScene::Update()
 {
 	player->Update();
 
-	int enemyCount;
 	//敵の更新処理
 	for (enemyCount = 0; enemyCount < 10; enemyCount++)
 	{
@@ -212,5 +213,15 @@ void GameMainScene::Draw() const
 //シーンの変更処理
 AbstractScene* GameMainScene::ChangeScene()
 {
+	if (player->LifeCheck())
+	{
+		return new GameOverScene;
+	}
+
+	if (enemy[enemyCount]->HpCheck())
+	{
+		return new Game
+	}
+
 	return this;
 }

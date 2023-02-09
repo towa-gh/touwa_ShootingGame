@@ -6,6 +6,7 @@
 class GameMainScene : public AbstractScene
 {
 private:
+	int enemyCount;
 	Player* player;
 	Enemy** enemy;
 	ItemBase** item;

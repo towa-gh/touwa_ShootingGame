@@ -103,6 +103,8 @@ void Enemy::Update()
 }
 void Enemy::Draw()
 {
+	DrawFormatString(10, 50, GetColor(255, 255, 255), "enemylife=%d", hp);
+
 	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 0));
 
 	for (int bulletCount = 0; bulletCount < 30; bulletCount++)

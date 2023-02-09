@@ -11,11 +11,6 @@ GameTitleScene::GameTitleScene()
 
 void GameTitleScene::Update() 
 {
-
-}
-
-void GameTitleScene::Draw() const {
-
 	// 点滅用の変数に 1 を足す
 	BrinkCounter++;
 
@@ -24,12 +19,17 @@ void GameTitleScene::Draw() const {
 	{
 		BrinkCounter = 0;
 	}
+}
+
+void GameTitleScene::Draw() const {
+
+	DrawString(400, 160, "Shooting Game!!", 0x0000ff);
 
 	// 点滅用の変数の値が 30 未満のときだけ --- PRESS SPACE KEY --- を描画する
 	if (BrinkCounter < 30)
 	{
 		SetFontSize(60);
-		DrawString(400, 360, "Plese SPACE Bar", 0x0000ff);
+		DrawString(400, 460, "Plese SPACE Bar", 0x0000ff);
 	}
 
 }
