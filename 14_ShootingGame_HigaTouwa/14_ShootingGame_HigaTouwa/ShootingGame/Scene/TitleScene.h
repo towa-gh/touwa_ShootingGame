@@ -1,14 +1,17 @@
 #pragma once
 #include "AbstractScene.h"
 
-class TitleScene : public AbstractScene {
-    int	g_MenuNumber;		// メニューカーソル位置
-    int g_MenuY;				// メニューカーソルのＹ座標
+class GameTitleScene : public AbstractScene
+{
+private:
+	static int BrinkCounter;
 public:
-    virtual ~TitleScene() {};
+	GameTitleScene();
+	virtual ~GameTitleScene()	//デストラクタ
+	{}
 
-    virtual AbstractScene* Update() override;
-
-    //描画に関することを実装する
-    virtual void Draw() const override;
+public:
+	virtual void Update() override;  //描画以外の更新を実装する
+	virtual void Draw() const override;	//描画に関することを実装する
+	virtual AbstractScene* ChangeScene() override;	//シーンの変更処理
 };

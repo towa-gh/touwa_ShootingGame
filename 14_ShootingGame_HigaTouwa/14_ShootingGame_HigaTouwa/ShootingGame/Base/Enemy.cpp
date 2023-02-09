@@ -4,41 +4,17 @@
 #include"StraightBullets.h"
 #include"RotateBullet.h"
 
-//敵の動きをパターン化
-struct MoveInfomation
+Enemy::Enemy(T_Location location) : CharaBase(location, 20.f, T_Location{ 1,1 }), hp(10), point(10), shotNum(0)
 {
-	int pattern;//パターン
-	T_Location targetLocation;//座標
-	int next;//次の座標
-	int waitTimeFlame;//立ち止まる時間
-	int attackPattern;//攻撃
-};
+	//BulletsBase** bullets;
+	bullets = new BulletsBase * [30];
+	for (int i = 0; i < 30; i++)
+	{
+		bullets[i] = nullptr;
+	}
+}
 
-MoveInfomation moveInfo[5] = {
-	//{ 0,    640, 150, 1,   0, 0},
-	//{ 0, 1200.4, 150, 2,   0, 2},
-	//{ 1,      0,   0, 3, 300, 1},
-	//{ 0,   80.2, 150, 4,   0, 2},
-	//{ 1,      0,   0, 1, 300, 1},
-};
-//移動する座標
-T_Location locations[4] = {
-	{640, -20},
-	{640,100},
-	{1040,100},
-	{240,100},
-};
-
-int next[4] = {
-	1,
-	2,
-	3,
-	2,
-};
-int current = 0;
-int WaitTime = 0;
-
-void InputCSV()
+void Enemy::InputCSV()
 {
 	FILE* fp;//FILE型構造体
 	errno_t error;//fopen_sのエラー確認
@@ -68,15 +44,6 @@ void InputCSV()
 	fclose(fp);//ファイルを閉じる
 }
 
-Enemy::Enemy(T_Location location) : CharaBase(location, 20.f, T_Location{ 1,1 }), hp(10), point(10), shotNum(0)
-{
-	//BulletsBase** bullets;
-	bullets = new BulletsBase * [30];
-	for (int i = 0; i < 30; i++)
-	{
-		bullets[i] = nullptr;
-	}
-}
 
 void Enemy::Update()
 {

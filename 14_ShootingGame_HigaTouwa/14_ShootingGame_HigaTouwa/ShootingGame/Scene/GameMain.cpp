@@ -124,15 +124,15 @@ void GameMainScene::Update()
 			}
 			if (player->HitSphere(bullet[bulletCount]))
 			{
-				//エネミーにプレイヤーの弾がヒットしている
-				//エネミーにダメージを与えます
+				//プレイヤーにエネミーの弾がヒットしている
+				//プレイヤーにダメージを与えます
 
 				player->Hit(bullet[bulletCount]->GetDamage());
 				//弾を削除します
 				enemy[enemyCount]->DeleteBullet(bulletCount);
 				bulletCount--;
 
-				//エネミーのHPが０以下だったら、エネミーを削除します
+				//プレイヤーのHPが０以下だったら、プレイヤーを削除します
 				if (player->LifeCheck())
 				{
 					////エネミーの削除

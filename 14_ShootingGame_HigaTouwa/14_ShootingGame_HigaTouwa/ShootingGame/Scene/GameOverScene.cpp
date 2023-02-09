@@ -1,26 +1,46 @@
-//#include"GameOverScene.h"
-//#include"TitleScene.h"
-//#include"DxLib.h"
-//#include"../common.h"
-//
-//AbstractScene* DrawGameOverScene::Update() {
-//	// スペースキーでメニューに戻る
-//	if (g_KeyFlg & PAD_INPUT_M) return new TitleScene();
-//
-//	return this;
-//}
-//
-//void DrawGameOverScene::Draw() const {
-//	SetFontSize(48);
-//	DrawString(200, 200, "Game Over", GetColor(255, 0, 0));
-//
-//	// 文字の表示(点滅)
-//	if (++g_WaitTime < 30) {
-//		SetFontSize(24);
-//		DrawString(150, 450, "--  Press [SPACE] Key  --", GetColor(255, 0, 0));
-//	}
-//	else if (g_WaitTime > 60) {
-//		g_WaitTime = 0;
-//	}
-//}
 
+#include"TitleScene.h"
+#include"../Base/KeyManager.h"
+#include"DxLib.h"
+#include"GameMain.h"
+#include"EndScene.h"
+
+GameTitleScene::GameTitleScene()
+{
+	BrinkCounter = 0;
+}
+
+void GameTitleScene::Update()
+{
+
+}
+
+void GameTitleScene::Draw() const {
+
+	// 点滅用の変数に 1 を足す
+	BrinkCounter++;
+
+	// 点滅用の変数が 60 になっていたら 0 にする
+	if (BrinkCounter == 60)
+	{
+		BrinkCounter = 0;
+	}
+
+	// 点滅用の変数の値が 30 未満のときだけ --- PRESS SPACE KEY --- を描画する
+	if (BrinkCounter < 30)
+	{
+		SetFontSize(60);
+		DrawString(400, 360, "Plese SPACE Bar", 0x0000ff);
+	}
+
+}
+
+//シーンの変更処理
+AbstractScene* GameTitleScene::ChangeScene()
+{
+	//WaitKey();
+	if (KeyManager::OnKeyClicked(KEY_INPUT_SPACE)) {
+		return new GameMainScene;
+	}
+	return this;
+}
