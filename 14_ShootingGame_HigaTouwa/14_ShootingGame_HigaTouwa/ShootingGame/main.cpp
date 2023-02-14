@@ -29,7 +29,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SetFontSize(20);		// 文字サイズを設定
 
 	//シーンマネージャーオブジェクトの作成
-	SceneManager sceneMng(dynamic_cast<AbstractScene*>(new GameTitleScene()));
+	SceneManager sceneMng(dynamic_cast<AbstractScene*>(new GameMainScene()));
 
 	// ゲームループ
 	while (ProcessMessage() == 0)

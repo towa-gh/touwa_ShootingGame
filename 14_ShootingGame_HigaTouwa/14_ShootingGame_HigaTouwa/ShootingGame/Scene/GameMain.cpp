@@ -64,17 +64,18 @@ void GameMainScene::Update()
 			}
 			if (enemy[enemyCount]->HitSphere(bullet[bulletCount]))
 			{
-				//エネミーにプレイヤーの弾がヒットしている
-				//エネミーにダメージを与えます
+				//エネミーにプレイヤーの弾がヒットしたら
+				//エネミーにダメージを与える
 				
 				enemy[enemyCount]->Hit(bullet[bulletCount]->GetDamage());
-				//弾を削除します
+				//弾を削除
 				player->DeleteBullet(bulletCount);
 				bulletCount--;
 			
-				//エネミーのHPが０以下だったら、エネミーを削除します
+				//エネミーのHPが０以下だったら、エネミーを削除
 				if (enemy[enemyCount]->HpCheck()) 
 				{
+					EnemyDown();
 					for (int i = 0; i < 10; i++) 
 					{
 						if (item[i] == nullptr)
@@ -210,6 +211,12 @@ void GameMainScene::Draw() const
 		item[i]->Draw();
 	}
 }
+int GameMainScene::EnemyDown() 
+{
+	enemyDown++;
+	return enemyDown;
+}
+
 //シーンの変更処理
 AbstractScene* GameMainScene::ChangeScene()
 {
@@ -218,9 +225,9 @@ AbstractScene* GameMainScene::ChangeScene()
 		return new GameOverScene;
 	}
 
-	if (enemy[enemyCount]->HpCheck())
+	if (enemyVolume == enemyDown)
 	{
-		return new Game
+		return new GameClearScene;
 	}
 
 	return this;
