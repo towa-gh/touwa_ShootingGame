@@ -23,6 +23,7 @@ void GameTitleScene::Update()
 
 void GameTitleScene::Draw() const {
 
+	SetFontSize(60);
 	DrawString(400, 160, "Shooting Game!!", 0x0000ff);
 
 	// 点滅用の変数の値が 30 未満のときだけ --- PRESS SPACE KEY --- を描画する
@@ -31,7 +32,7 @@ void GameTitleScene::Draw() const {
 		SetFontSize(60);
 		DrawString(400, 460, "Plese SPACE Bar", 0x0000ff);
 	}
-
+	SetFontSize(DEFAULT_FONT_SIZE);
 }
 
 //シーンの変更処理
