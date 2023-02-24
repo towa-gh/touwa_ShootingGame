@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ShootingGame\Base\diffusionBullets.cpp" />
     <ClCompile Include="ShootingGame\Base\RotateBullet.cpp" />
     <ClCompile Include="ShootingGame\Base\BulletsBase.cpp" />
     <ClCompile Include="ShootingGame\Base\CharaBase.cpp" />
@@ -39,6 +40,7 @@
     <ClCompile Include="ShootingGame\Scene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ShootingGame\Base\diffusionBullets.h" />
     <ClInclude Include="ShootingGame\Base\RotateBullet.h" />
     <ClInclude Include="ShootingGame\Base\BulletsBase.h" />
     <ClInclude Include="ShootingGame\Base\CharaBase.h" />
