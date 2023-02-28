@@ -1,12 +1,16 @@
 #pragma once
 #include "BulletsBase.h"
 #include "Player.h"
+#include "Enemy.h"
 class diffusionBullets : public BulletsBase
 {
 public:
 	Player* player;
+	Enemy* enemy;
 	int px;
 	int py;
+	int ex;
+	int ey;
 	int ShotCount;
 	float trad;
 public:
